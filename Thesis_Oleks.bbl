@@ -1,0 +1,155 @@
+\begin{thebibliography}{10}
+
+\bibitem{rotat}
+J.~M. Franck, S.~Chandrasekaran, B.~Dzikovski, C.~R. Dunnam, and J.~H. Freed,
+  ``Focus: Two-dimensional electron-electron double resonance and molecular
+  motions: The challenge of higher frequencies,'' {\em The Journal of Chemical
+  Physics}, vol.~142, no.~21, pp.~--, 2015.
+
+\bibitem{mul}
+L.~J. Mueller, ``Tensors and rotations in nmr,'' {\em Concepts in Magnetic
+  Resonance Part A}, vol.~38A, no.~5, pp.~221--235, 2011.
+
+\bibitem{Matlab}
+``Multidimensional arrays.''
+  \url{http://www.mathworks.com/help/matlab/math/multidimensional-arrays.html},
+  note = {Accessed: 2015-06-30}.
+
+\bibitem{Bain200363}
+A.~D. Bain, ``Chemical exchange in \{NMR\},'' {\em Progress in Nuclear Magnetic
+  Resonance Spectroscopy}, vol.~43, no.~3–4, pp.~63 -- 103, 2003.
+
+\bibitem{pathria}
+R.K.Pathria and P.~D. Beale, {\em Statistical Mechanics}.
+\newblock Burlington, Massachusetts: Elsevier, 2012.
+
+\bibitem{gold}
+H.~Goldstein, {\em Classical Mechanics}.
+\newblock Reading,Massachusetts: Addison‐Wesley, 1980.
+
+\bibitem{gam}
+D.~Gamilel and H.~Levanon, {\em Stochastic Processes in Magnetic Resonance}.
+\newblock River Edge, New Jersey: World Scientific, 1995.
+
+\bibitem{thesis1}
+B.~N. Frecus, {\em Theoretical studies of EPR parameters of spin-labels in
+  complex environments}.
+\newblock PhD thesis, Theoretical Chemistry School of Biotechnology,Royal
+  Institute of Technology, 2013.
+
+\bibitem{nordio}
+P.~Nordio, {\em Magnetic Resonance Theory. In L.J. Berliner,Spin Labeling
+  Theory and Applications}.
+\newblock 1976.
+
+\bibitem{car}
+A.~M. A.Carrington, {\em introduction to Magnetic Resonance}.
+\newblock New York: Harper `\&' Row, 1967.
+
+\bibitem{slich}
+C.~Slichter, {\em Principles of Magnetic Resonance}.
+\newblock New York: Harper `\&' Row, 1963.
+
+\bibitem{griff}
+D.~J. Griffiths, ``Hyperfine splitting in the ground state of hydrogen,'' {\em
+  Am. J. Phys.}, 1982.
+
+\bibitem{marina}
+M.~Bennati and D.~M. Murphy, {\em Electron Paramagnetic Resonance Spectra in
+  the Solid State}, pp.~195--250.
+\newblock John Wiley \& Sons, Inc., 2008.
+
+\bibitem{duer}
+M.~J. Duer, {\em Dipolar Coupling: Its Measurement and Uses}, pp.~113--121.
+\newblock Wiley-Blackwell, 2002.
+
+\bibitem{tomog}
+R.~Kimmich, {\em Kimmich, Rainer: NMR Tomography, Diffusometry, Relaxometry: A
+  Personal Retrospective of the Last Four Decades}, pp.~456--460.
+\newblock John Wiley \& Sons, Ltd, 2007.
+
+\bibitem{simon}
+D.~J. Siminovitch, ``Rotations in nmr: Part i. euler–rodrigues parameters and
+  quaternions,'' {\em Concepts in Magnetic Resonance}, vol.~9, no.~3,
+  pp.~149--171, 1997.
+
+\bibitem{gorsh}
+A.~Yershova, S.~Jain, S.~M. Lavalle, and J.~C. Mitchell, ``Generating uniform
+  incremental grids on so(3) using the hopf fibration,'' {\em Int. J. Rob.
+  Res.}, vol.~29, pp.~801--812, June 2010.
+
+\bibitem{anderson}
+P.~Anderson, ``A mathematical model for the narrowing of spectral lines by
+  exchange or motion,'' {\em J. Phys. Soc. Jpn.}, 1954.
+
+\bibitem{kubo}
+R.~Kubo, ``Note on the stochastic theory of resonance absorption,'' {\em J.
+  Phys. Soc. Jpn.}, 1954.
+
+\bibitem{inda}
+K.~D. S.~M. H.~Agarwalla, BK.~Ando, ``Stochastic liouville equations for
+  femtosecond stimulated raman spectroscopy,'' {\em Journal of Chemical
+  Physics}, 2015.
+
+\bibitem{kubo1}
+R.~Kubo, {\em A Stochastic Theory of Line Shape. In K.E. Shuler Stochastic
+  Processes in Chemical Physics}.
+\newblock New York: Wiley `\&' Sons, 1969.
+
+\bibitem{kubo2}
+``{Boltzman Award} winners.''
+  \url{http://www.ms.unimelb.edu.au/~statphys24/website/boltzmann.html}.
+\newblock Accessed: 2015-06-30.
+
+\bibitem{blume}
+M.~Blume, ``Stochastic theory of line shape: Generalization of the
+  kubo-anderson model,'' {\em Physical Review}, 1968.
+
+\bibitem{hortell}
+G.~C. C.~S.~Horstmann, {\em Core Java}.
+\newblock Uppre Saddle River, NJ: Prentice Hall PTR, 2012.
+
+\bibitem{javapal}
+``Java 8 streams api and parallelism.''
+  \url{http://radar.oreilly.com/2015/02/java-8-streams-api-and-parallelism.html}.
+\newblock Accessed: 2015-06-30.
+
+\bibitem{flanagan}
+``Michael thomas flanagan's java scientific library.''
+  \url{http://www.ee.ucl.ac.uk/~mflanaga/java/}.
+\newblock Accessed: 2015-06-30.
+
+\bibitem{slower}
+``Ubuntu intel® q6600® one core computer language benchmarks check.''
+  \url{http://benchmarksgame.alioth.debian.org/u32/python.php}.
+\newblock Accessed: 2015-06-30.
+
+\bibitem{SciPy1}
+K.~Young, ``Summarizing complexity in high dimensional spaces,'' in {\em
+  Proceedings of the 7th Python in Science Conference} (G.~Varoquaux,
+  T.~Vaught, and J.~Millman, eds.), (Pasadena, CA USA), pp.~66 -- 69, 2008.
+
+\bibitem{SciPy2}
+S.~J.~V. der Walt, ``The scipy documentation project (technical overview),'' in
+  {\em Proceedings of the 7th Python in Science Conference} (G.~Varoquaux,
+  T.~Vaught, and J.~Millman, eds.), (Pasadena, CA USA), pp.~27 -- 28, 2008.
+
+\bibitem{numpy}
+H.~Langtangen and X.~Cai, ``On the efficiency of python for high-performance
+  computing: A case study involving stencil updates for partial differential
+  equations,'' in {\em Modeling, Simulation and Optimization of Complex
+  Processes} (H.~Bock, E.~Kostina, H.~Phu, and R.~Rannacher, eds.),
+  pp.~337--357, Springer Berlin Heidelberg, 2008.
+
+\bibitem{gpu}
+S.~Harding and W.~Banzhaf, ``Fast genetic programming on gpus,'' in {\em
+  Genetic Programming} (M.~Ebner, M.~O’Neill, A.~Ekárt, L.~Vanneschi, and
+  A.~Esparcia-Alcázar, eds.), vol.~4445 of {\em Lecture Notes in Computer
+  Science}, pp.~90--101, Springer Berlin Heidelberg, 2007.
+
+\bibitem{mercer}
+K.-R.~M. A.~Smola, B.~Sch{\"o}lkopf, ``The connection between regularization
+  operators and support vector kernels,'' {\em Neural Networks}, vol.~11,
+  pp.~637--649, 1998.
+
+\end{thebibliography}
