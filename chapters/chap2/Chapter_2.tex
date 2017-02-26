@@ -1,8 +1,8 @@
 \chapter{Model Development and Results}
 \section{Results Magnetic Resonance}
-We will discuss algorithmic approach on developing the generalized Kubo-Anderson model. We will also discuss the results of model simulation for 6 and 48 stochastic indexes states.  
+We will discuss algorithmic approach on developing the generalized Kubo-Anderson model. We will describe general computational pitfalls that was faced during the software development and proposed solutions and tools to simulate stochastic behavior of the interacting systems in applied magnetic field. The introduction to Masters equation and transition rate matrix construction will be covered as well. At the end of the chapter we will cover Hamiltonian construction and difference between various models in low and high field approximations.
 \subsection{Algorithm to find inverse of Liouville Matrix}
-In order to obtain lineshape from stochastic approach on relaxation effects of spin dynamics in EPR it is important to asset proper inversion algorithm of Liouville matrix from [Eq.35]. Liouville matrix in Blume has a form of two dimensional array where each index of the dimension has and additional three sub-indexes. In other words: 
+In order to obtain lineshape from stochastic approach on relaxation effects of spin dynamics it is important to asset proper inversion algorithm of Liouville matrix from Eq\.Ref{eq:35}. Liouville matrix can be represented as two dimensional array where each index of the dimension has and additional three sub-indexes specified by stochastic and electron or/and nuclus spin states. In other words: 
 \begin{equation}\label{eq:53}
 \mathcal{L}_{i,j}=\mathcal{L}_{a,m_0,m_1;b,m_0',m_1'}  
 \end{equation}  
@@ -29,19 +29,19 @@ Issue arises from the fact that matrix inversion of the multidimensional array i
     $1,1/2,1/2$ & $\rightarrow$ & 000 & 1 \\ \hline
     $1,-1/2,1/2$ & $\rightarrow$ & 010 & 2  \\ \hline
     $1,1/2,-1/2$ & $\rightarrow$ & 001 & 3 \\ \hline
-  	$1,-1/2,-1/2$ & $\rightarrow$ & 011  & 4\\ \hline
+    $1,-1/2,-1/2$ & $\rightarrow$ & 011  & 4\\ \hline
     $2,1/2,1/2$ & $\rightarrow$ & 100 & 5 \\ \hline
     $2,-1/2,1/2$ & $\rightarrow$ & 110 & 6  \\ \hline
     $2,1/2,-1/2$ & $\rightarrow$ & 101 & 7 \\ \hline
-  	$2,-1/2,-1/2$ & $\rightarrow$ & 111  & 8\\ \hline
-  	$3,1/2,1/2$ & $\rightarrow$ & 200 & 9 \\ \hline
+    $2,-1/2,-1/2$ & $\rightarrow$ & 111  & 8\\ \hline
+    $3,1/2,1/2$ & $\rightarrow$ & 200 & 9 \\ \hline
     $3,-1/2,1/2$ & $\rightarrow$ & 210 & 10  \\ \hline
     $3,1/2,-1/2$ & $\rightarrow$ & 201 & 11 \\ \hline
-  	$3,-1/2,-1/2$ & $\rightarrow$ & 211  & 12\\ \hline
-  	$4,1/2,1/2$ & $\rightarrow$ & 300 & 13 \\ \hline
+    $3,-1/2,-1/2$ & $\rightarrow$ & 211  & 12\\ \hline
+    $4,1/2,1/2$ & $\rightarrow$ & 300 & 13 \\ \hline
     $4,-1/2,1/2$ & $\rightarrow$ & 310 & 14  \\ \hline
     $4,1/2,-1/2$ & $\rightarrow$ & 301 & 15 \\ \hline
-  	$4,-1/2,-1/2$ & $\rightarrow$ & 311  & 16\\ \hline
+    $4,-1/2,-1/2$ & $\rightarrow$ & 311  & 16\\ \hline
 
     \end{tabular}
 \end{center}
@@ -58,7 +58,7 @@ In general the same pattern of encoding is valid for $j$-th index that consists 
 \item Transformed matrix inversion: $\mathcal{L}'[i,j]=\mathcal{L}'[i,j]^{-1}$
 \item Transformation 2-dimensional matrix back to multidimensional: \\ $\mathcal{L}'[i][j]\rightarrow \mathcal{L}[a,m_0,m_1,b,m_0',m_1']$ 
 \end{enumerate}   
-\end{center}   	
+\end{center}    
 Stage 4 is important as it simplifies summation defined by Eq. 36. \\*
 In order to establish algorithm implementation as well as proceeding software developing Java, Matlab and Python have been tested on computational efficiency. \\*
 Java is  a programming language released by Sun Microsystems in 1995. It is a object-oriented programming language and distributed freely and portable on most modern operating systems platforms. Classes define objects constructors and represent interfaces in a Java application. Just In Time compiler(JIT) bring a boost to queries and computational efficiency allowing to track productivity of each separate part of code~\cite{hortell} and in Java 8 parallel execution of classes have been added~\cite{javapal}. In Java multidimensional arrays represented as an N-dimensional Object superclass and part of java.util.Arrays package. Any interaction between Objects in Java is valid if they are define through the methods that are specified for both objects. For complex numbers operations Thomas Flanagan~\cite{flanagan} Scientific Library was used. Author of this dissertation finds counterproductive rewriting basic available as open source linear algebra packages and relies on 3-d party developers as true example fo scientific collaboration. For the visualization properties for 2-D chats JFreeChart based on native Java Foundation Classes(JFC). For 3-D visualisation Jzy3d open source library was used that requires Open Graphics Library(OpenGL)  multi-platform application programming interface for rendering vector graphics.\\*
@@ -93,6 +93,75 @@ While working on SpinAl during mine PhD career our group was also exploring anot
 We have also developed numerous useful tolls for proof-of-concept as well as transition rate matrix population in Matlab which are available upon request from Professor Keith Earle Lab. Matlab is a widely know in computational community multi-paradigm proprietary language developed by MathWorks and requires licence to use it. Matlab 8.2 R2013B was used to for the SpinAl algorithm implementation as well but had a lower performance to the equivalent in written Java. Using C-like N-dimensional array inversion available in latest releases I was not able to reproduce generalized results as in Java and Python in high magnetic field and lower transition rates regimes. Thus majority of the discussed results were obtained in Java and mostly in Python. Python source code is available at GitHub repository as well~\cite{eprgit}\\*
 For computation purposes Asus ROG G75VX laptop was used with Intel 3rd generation Core i7 3630QM  processor, 16 GB DDR3 1600GHz memory and equipped with NVIDIA GTX 670 MX graphic processing unit(960 cores).\\* 
 \subsection{Transition Rate Matrix}
+In order to advance in description of the interacting environment and to define appropriate number of stochastic states should be determined. Spin dynamics should be treated three dimensionally and stochastic transitions can be described as $3-D$ polyhedra. Such treatment might simplify in special cases determination of allowed transitions. Technically number of stochastic states yet are limited with computational abilities of the computing machine or cluster. Another issue arises is that adjacency matrix which specifies allowed transitions and corresponding Euler angles between random states should be determined. In this research we have mainly concentrated on comparing EPR spectrum generated with the assumption of 2, 6 and 48 stochastic states. \\*
+Just as with discrete time, a continuous-time stochastic process is a Markov process if the conditional probability of a future event given the present state and additional information about past states depends only on the present state. A CTMC is a continuous-time Markov process with a discrete state space, which can be taken to be a subset of the nonnegative integers.\\*
+\begin{equation}\label{eq:markov}
+P(X(s+t)=a|X(s)=b,X(r)=a_r,r\in A_s\subset[0,s))=P(X(s+t)=b|X(s)=a)
+\end{equation} 
+for all states $i$ and $j$ and for all times $s > 0$ and $t > 0$. On the left in \ref{eq:markov}, we are conditioning on the values of $X(r)$ for all times $r$ in a subset of “past” times $A_s$ in addition to the value at the “present” time $s$. In general, $A_s$ could be an arbitrary subset of $[0, s) \equiv (r:0\leq r<s)$,but to have the conditional probability in \ref{eq:markov} well defined by elementary methods, we assume that $A_s$ is a finite subset. \\*
+The conditional probabilities $P(X(s+t) = j|X(s) = i)$ are called the transition probabilities. We will consider the special case of stationary transition probabilities (sometimes referred to as homogeneous transition probabilities), occurring when
+\begin{equation}\label{eq:markov}
+P(X(s+t)=a|X(s)=b)=P(X(t)=b|X(0)=a) \equiv P_{i,j}(t)
+\end{equation} 
+Just as in discrete time, the evolution of the transition probabilities over time is described by the Chapman-Kolmogorov equations, but they take a different form in continuous time. In
+formula (2.4) below, we consider a sum over all possible states at some intermediate time. In doing so, we simply write a sum over integers. When we do that, we understand the sum to be over all possible states.
+\begin{equation}\label{eq:markov}
+P_{i,j}(s+t)= \sum_k P_{i,k}(s)P_{k,j}(t)
+\end{equation} 
+A second modelling approach is based on representing the transition probabilities as the solution of a system of ordinary differential equations, which allows us to apply well-established modelling techniques from the theory of differential equations in a deterministic setting; e.g.,see Simmons (1991).But first we must define zero-time transition probabilities, which we do in the obvious way: We let $P(0) = I$, where $I$ is the identity matrix; i.e., we set $P_{i,i}(0) = 1$ for all $i$ and we set $P_{i,j} (0) = 0$ whenever $i \neq j$. We are just assuming that you cannot go anywhere in zero
+time. We then let the transition rate from state $i$ to state $j$ be defined in terms of the derivatives:
+\begin{equation}\label{eq:markov3}
+W_{i,j}\equiv P_{i,j}'(0)\equiv \frac{dP_{i,j}}{dt}
+\end{equation} 
+For a finite state space, which we have assumed, and for infinite state spaces under extra regularity conditions, we will have
+\begin{equation}\label{eq:markov3}
+-W_{i,i}\equiv\sum_{j,j\neq i}W_{i,j}
+\end{equation} 
+As an example of transition rate matrix construction one can assume two possible random events occurrence. In terms of magnetic resonance this situation is close to chemical shifts and will be discussed in a bit more details later.  
+\begin{equation}\label{eq:55}
+W = \begin{bmatrix}
+       -w_{11} & w_{12}  \\[0.3em]
+        w_{21} & -w_{22}  
+     \end{bmatrix}
+\end{equation}
+Diagonal elements are defined via Eq.\ref{eq:markov3} and it means that probability leaving the state is equal to the probability of reaching it. In more complicated example whn relaxation processes couples more states due to the complicated spin motion pattern consider 6 possible states(events). Graph of allowed transitions is given on Fig.\ref{figure:wdiagramm}. One can imagine an octahedron in three dimensional representation labelling edges with indexes from 1 to 6 and defining adjacency matrix of relative coupling,    
+\begin{figure}[h!]
+\begin{center}
+\includegraphics[width=0.7\textwidth]{figures/chap2/wdiagramm.png}
+\caption{transition probabilities graph between 6 possible events}
+\label{figure:wdiagramm}
+\end{center}
+\end{figure}
+\begin{equation}\label{eq:Wmat1}
+W = \begin{bmatrix}
+       w_{11} & w_{12} & 0 & w_{14} & 0 & w_{16}  \\[0.3em]
+       w_{21} & w_{22} & w_{23} & 0 & w_{25} & 0  \\[0.3em]
+       0 & w_{32} & w_{33} & w_{34} & w_{35} & 0  \\[0.3em]
+       w_{41} & 0 & w_{43} & w_{44} & w_{45} & 0 \\[0.3em]
+       0 & w_{52} & 0 & w_{54} & w_{55} & w_{56} \\[0.3em]
+       w_{61} & 0 & w_{63} & 0 & w_{65} & w_{66} 
+     \end{bmatrix}
+\end{equation}
+Diagonal elements are defined as well as for 2 events case by Eq.\ref{eq:markov3}. Another interest is to define rate of tumbling between probability of transitions and assume that an a priori probability between different states transitions might not equal to each other. More evidentially assume transformation of principal axis frame of $g$ or $A$ tensors that are parametrized by euler angles and define  fast transition as $\vec{R}(0,0,0)\xrightarrow {1\rightarrow 6}\vec{R}(0,0,\pi/2)$. Similarly moderate $\vec{R}(0,0,0)\xrightarrow {1\rightarrow 2}\vec{R}(0,\pi/2,0)$  and slow $\vec{R}(0,0,0)\xrightarrow {1\rightarrow 4}\vec{R}(0,0,\pi/2)$. The results for the constructed matrix is given below,   
+\begin{equation}\label{eq:Wmat2}
+W = \begin{bmatrix}
+       0 & m & 0 & s & 0 & f  \\[0.3em]
+       m & 0 & s & 0 & f & 0  \\[0.3em]
+       0 & s & 0 & f & m & 0  \\[0.3em]
+       s & 0 & f & 0 & m & 0 \\[0.3em]
+       0 & f & 0 & m & 0 & s \\[0.3em]
+       f & 0 & m & 0 & s & 0 
+     \end{bmatrix}
+\end{equation}
+Where $s,m$ and $f$ define three probability transition rates: slow, moderate and fast respectively. It appears that for special cases it might slightly modify the line shape. Yet another even more complicated case is given as 48 total stochastic states defined by quaternion representation by rotation by $\pi/2$ on $S(3)$ assuming nearest neighbours distance as $pi/4$ and Euler angles have been reconstructed. The output of the adjacent matrix is appeared to be sparse
+\begin{figure}[h!]
+\begin{center}
+\includegraphics[scale=0.5]{figures/chap2/sparce.png}
+\caption{Illustration of allowed transitions between 48 states defined by quaternion representation of  rotation os $S(3)$. Allowed transitions are in red. }
+\label{figure:blumediag}
+\end{center}
+\end{figure}  
+\clearpage
 \subsection{Chemical Shift}\label{blumeinitialmodel}
 Validation step for validation AI algorithm is to reproduce original absorption spectra of NMR linehshape for isolated spin-1/2 nucleus in a fixed magnetic field and fluctuating fields along $x,y$ and $z$ orientations. For specific model $I_0=I_1=1/2$. Number of stochastic states corresponds to two and can be described as chemical exchange process. As simple example of chemical exchange consider two $N$-methyl groups in $N,N'$ - dimethylformamide can exchange their relative bond and reactant chemically and physically remains indistinguishable from the product. Methyl groups are coloured in red and black to make process visible.       
 \begin{figure}[h!]
