@@ -1,7 +1,7 @@
 \chapter{Theoretical Background in Magnetic Resonance}
 \section{Theory of Magnetic Resonance}
 We discus classical and quantum mechanical theories of Magnetic Resonance and spin dynamics in this chapter. Phenomenological Bloch equations and importance of motional effects on the spectral profiles will be covered as well. We will also cover $g$ and $A$ tensors importance on the spectral line profiles and Hamiltonian transition between reference frames under the rotations. 
-\subsection{Energy Splitting and Bloch Equations}
+\subsection{Energy Splitting and Bloch Equations}\label{blochsection}
 In Nuclear Magnetic Resonance(NMR) atomic nuclei or unpaired electrons in Electron Paramagnetic Resonance (EPR) in strong applied magnetic field behave like a compass needle experiencing a torque tending to align its dipole moment in the direction of the field. Macroscopically model can be studied as system of N identical distinguishable and mutually non-interacting dipoles whose population ratio can be determined in terms of Boltzmann distribution~\cite{pathria}. Each individual dipole can be well described in terms of classical mechanics as motion of gyroscope in gravitational. Precise derivation and description can of phenomena can be found in any standard classical mechanics textbook like Goldstein~\cite{gold}. Torque of such "gyroscope" can be written in terms of magnetization $\vec{M}$ and applied magnetic field $\vec{B}$:
 \begin{equation}\label{eq:torque}
 \vec{\tau}=\vec{M}\times\vec{B}
@@ -83,7 +83,7 @@ In the rotating frame Bloch equations from \eqref{eq:bloch} can be rewritten as:
 \end{align}
 \end{subequations}
 Difference between Larmour and irradiation frequencies gives the energy absorption in the system and defined as $\Delta\omega=\omega-\omega_0$ and conditionally it defines resonance phenomenon. Evolution of net magnetization of the sample can be generalized and predicted in terms of Bloch equations solving it with the specific to the system constraints. For high field experiments when $B_0 \sim B_1$ or including line saturation, harmonic generation, multiquantum transitions and etc. solution becomes not trivial. 
-\subsection{Density Matrix} 
+\subsection{Density Matrix}\label{densitymatrixsubsection} 
 Magnetization quantum mechanically can be found as expectation value of quantum operators like nuclear or spin angular momentum ones. Technique to treat time evolution of the magnetization is given through the density matrix approach.\\* 
 Lets Assume that wave function is a product of two wave functions: 
 \begin{equation}\label{eq:10}
@@ -157,7 +157,7 @@ Corresponding Liouville matrix has a following form:
      \end{bmatrix}
 \end{equation}
 There are different approaches on algorithm of Liouville matrix construction that can be useful if number $S>1$ and construction by hand can lead to difficultly traceable error.In more details  discussed in Gamilel~\cite{gam}.   
-\subsection{The g-tensor}
+\subsection{The g-tensor}\label{gtensorsection}
 In crystaline and liquid systems EPR spectra may dependent on orientation of the sample relative to applied magnetic field $B_0$ this also known as spectrum anistopy. Consider Zeeman term for spin Hamiltonian given as: 
 \begin{equation}\label{eq:20}
 \mathcal{\hat{H}}=\beta \vec{B}\cdot g \cdot \hat{S}
@@ -220,7 +220,7 @@ And integral for 2-electron coupling can be written as:
 \langle 0|\sum_{ij}[\pmb{r}_{ij}\times(\nabla_i-2\nabla_j)]_us_{jz}|n\rangle\langle n|\sum_j(\pmb{r}_k\times\nabla_k)_v|0\rangle
 \end{equation}
 Where summation is done over all orbitals $(i,j)$ and $u,v$ are the Cartesian axises.
-\subsection{A-tensor}
+\subsection{A-tensor}\label{atensorsection}
 The interaction between spin of unpaired electron with local magnetic fields which are product of spin of nuclei in the molecule where electron is located can lead to additional spectral lines. Electron and nuclear spins are quantized thus number of lines for a single nuclei can be found as $2I+1$ and they are clustered around major Zeeman energy levels. This interaction is known as Nuclear Hyperfine interaction. Separation between this additional lines determined by the hyperfine coupling constant. Hamiltonian for hyperfine interaction can be written~\cite{nordio}: 
 \begin{equation}\label{eq:23}
 \mathcal{\hat{H}}_{hf}=-g_e\beta_eg_N\beta_N\Big[\frac{(\hat{I}\cdot \hat{S})r^2-3(\hat{I}\cdot\vec{r})(\hat{S}\cdot\vec{r})}{r^5}-\frac{8\pi}{3}(\hat{I}\cdot\hat{S})\delta(\vec{r})\Big]
@@ -246,7 +246,7 @@ Anisotropic part is dominating over isotropic~\cite{griff} . Due to the fact tha
 \begin{array} {lcl} &A^2& = A_{xx}^2\sin^2\theta\cos^2\phi+2A_{xy}^2\sin^2\theta cos\theta+A_{yy}^2sin^2\theta\\ & + & A_{yy}\sin^2\theta\sin^2\phi+2A_{xz}\cos\theta\sin\theta\cos\phi\\ & + & 2A_{yz}\cos\theta\sin\theta\sin\phi+A_{zz}\cos^2\theta \end{array}
 \end{equation}
 Effect of rhombic anisotropy will be treated in this work. 
-\subsection{Rotations in Magnetic Resonance}
+\subsection{Rotations in Magnetic Resonance}\label{torationsection}
 In previous sections discussing anisotropy of the Hamiltonians due to orientation dependence of sample relative to the strong applied magnetic field. Sometimes each specific parts of the Hamiltonian are defined in the different reference frames thus unified algorithm on gathering all frames together should be introduced.*//  
 For example applied magnetic field $\vec{B}$ is defined in Laboratory Frame(LF) and axis as was discussed previously is taken along z-axis. In complex samples such as liquids or membranes it is always an interest to introduce Directory Frame(DF) where usually z-axis is along restoring potentials and z and y-axis are coincide with the same axis in LF. DF is usually tilted from relative to the $\vec{B}$ by the angle $\psi$ which can be obtained by the set of Euler angles that transform LF to DF~\cite{rotat}~\cite{bmr}. Diffusion tensor is defined in the frame relative to the molecular orientations o Molecular Frame(MF). it is usually axial symmetric thus having any arbitary direction that can be fixed within Laboratory Frame by the specification of the second Euler angle~\cite{bmr} which is true in the limit of nitrooxide spin labelling line shape calculation. The last two frames are the principal frames of the $g$ and $A$-tensors which can be transformed to the MF and then to LF by the set of all three Euler angles. In most cases $g$ and $A$-tensors principal axes are coincide thus simplifying theoretical work for the line shape calculation. Diagram of all the frames is given at Fig.\ref{figure:rotat}
 \begin{figure}[h]
@@ -363,7 +363,7 @@ Wigner matrix elemennts in Euler-Rodrigues parametrization can be written as:
 \end{multline}
 Eq.\eqref{eq:dlmkeuler} will be used to construct Wigner Matrix and thus gives additional leap on parametrization. 
 \clearpage
-\subsection{Kubo-Anderson Model of Motional Narrowing}
+\subsection{Kubo-Anderson Model of Motional Narrowing}\label{kuboandersonsection}
 Spectrum narrowing is known phenomena in magnetic resonance when line shape affected by slow and rapid interaction of the spins with the environment and itself. It takes two forms motional and exchange narrowing. Motional narrowing caused by interactions of atoms in the environment while in motion while exchange interaction affects electronic magnetic moments. Main theoretical work was developed by chemical physicists~\cite{anderson} and ~\cite{kubo} in mid 50's of 20th century. Its relative simplicity and cross-scientific application to different spectroscopic methods ~\cite{inda} attracts more attention and discussion on simulation of complex interacting environment.\\*
 First it is important fundamentally define what type of interaction affects the line shape. Non-magnetic interactions have no effect on structural profile as they can not affect relative spins population ratio thus only magnetic like hyperfine, Zeemann or dipolar interaction can have a direct effect. Interestingly that non-magnetic interactions do affect line shape by the localized molecular motions tending to average out and narrow multiplet lines or simply "hide" important structural information on sample like $g$ or $A$ tensors anisotropy. In extreme rapid molecular motion line breadth is defined as~\cite{anderson}: 
 \begin{equation}\label{eq:28}
