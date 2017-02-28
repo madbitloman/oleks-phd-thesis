@@ -94,42 +94,28 @@ We have also developed numerous useful tolls for proof-of-concept as well as tra
 For computation purposes Asus ROG G75VX laptop was used with Intel 3rd generation Core i7 3630QM  processor, 16 GB DDR3 1600GHz memory and equipped with NVIDIA GTX 670 MX graphic processing unit(960 cores).\\* 
 \subsection{Transition Rate Matrix}\label{trmsection}
 In order to advance in description of the interacting environment well discussed in section \ref{kuboandersonsection} we need to determine suitable number of stochastic states $a$ and $b$ that form a two dimensional matrix $W$ known as transition rate matrix. We will start introduction from pure probabilistic approach with correlation to spin dynamics. We were discussing computational algorithm performance in a previous section but have not yet established the relation between 2,6 and 48 sotchastic indexes and their significance. Our goal in this research work was to determine lower bound of discrete states that are necessary to faithfully reproduce an ESR lineshape using concepts derived from information geometry\cite{Earle2009}.\\*
-We start by exploring any physical system with two states as an example electron or nucleus spin-1/2 systems with possible spin up or down orientations.   
-\begin{equation}\label{eq:master}
-\frac{dp_{i}}{dt}=-\sum_{j\neq i}w_{i\rightarrow j}p_{i}+\sum_{j\neq i}w_{j\rightarrow i}p_{j}
-\end{equation}   
-\begin{equation}\label{eq:masterbal}
-w_{i\rightarrow j}p_{i}=w_{j\rightarrow i}p_{j}
+As an example of transition rate matrix construction we will start by introducing a two-state system that can uniformly and randomly transit between its states. As an example of such system one can imagine a chemical exchange where nucleus moves reversably from one environment to another at constant rate. In general this probabilistic approach on describing time evolution of of large discrete fluctuating systems is widely used in economics\cite{Weidlich1992}. Lets assume that for the nucleus transition to one state is defined by the rate $\omega_{1\rightarrow2}$ and jump back as $\omega_{2\rightarrow1}$ or simply $\omega_{12}$ and $\omega_{21}$. Corresponding probabilities are $P_{1}(t)$ and $P_{2}(t)$ that nucleus either in one or another state. We take the Markov assumption such that transition rate between states does not depend on the history of the process but rather on the state at specific time $t$ between enclosed time intervals $(t,t+dt)$. Further the probability of a nucleus being in state 1 between $(t,t+dt)$ can be described as following: 
+\begin{equation}\label{eq:premaster}
+P_{1}(t+dt)=P_{1}(t)[1-\omega_{12}dt]+P_{2}\omega_{21}dt+\mathcal{O}(dt^2)
 \end{equation} 
+First term arises from assumption that nucleus did not transition to the second state and second term represents transition back to the state 1 in a given time interval. The last term $\mathcal{O}(dt^2)$ came from assumption that particle could follow a chain from $1\rightarrow 2 \rightarrow 1$. Taking a limit $dt\rightarrow 0$ the result appear to be a simple set of differential equations: 
+\begin{equation}\label{eq:masterlol}
+\frac{dP_{1}}{dt}=-\omega_{12}P_{1}(t)+\omega_{21}P_{2}(t)
+\end{equation}
+Or generalized we can writte for arbitary states as: 
+\begin{equation}\label{eq:master}
+\frac{dP_{i}}{dt}=-\sum_{j\neq i}\omega_{i\rightarrow j}P_{i}+\sum_{j\neq i}\omega_{j\rightarrow i}P_{j}
+\end{equation}
+Eq.\ref{eq:master} known as Master Equation. In vector form:   
 \begin{equation}\label{eq:matrix}
 \frac{d\vec{p}}{dt}=-\vec{W}\vec{p}
 \end{equation} 
 Where $\vec{p}$ is a column vector with probabilities $p_i$ and $\vec{W}$ is a square transition rate matrix.
-
-Just as with discrete time, a continuous-time stochastic process is a Markov process if the conditional probability of a future event given the present state and additional information about past states depends only on the present state. A CTMC is a continuous-time Markov process with a discrete state space, which can be taken to be a subset of the nonnegative integers.\\*
-\begin{equation}\label{eq:markov}
-P(X(s+t)=a|X(s)=b,X(r)=a_r,r\in A_s\subset[0,s))=P(X(s+t)=b|X(s)=a)
-\end{equation}   
-for all states $i$ and $j$ and for all times $s > 0$ and $t > 0$. On the left in \ref{eq:markov}, we are conditioning on the values of $X(r)$ for all times $r$ in a subset of “past” times $A_s$ in addition to the value at the “present” time $s$. In general, $A_s$ could be an arbitrary subset of $[0, s) \equiv (r:0\leq r<s)$,but to have the conditional probability in \ref{eq:markov} well defined by elementary methods, we assume that $A_s$ is a finite subset. \\*
-The conditional probabilities $P(X(s+t) = j|X(s) = i)$ are called the transition probabilities. We will consider the special case of stationary transition probabilities (sometimes referred to as homogeneous transition probabilities), occurring when
-\begin{equation}\label{eq:markov}
-P(X(s+t)=a|X(s)=b)=P(X(t)=b|X(0)=a) \equiv P_{i,j}(t)
-\end{equation} 
-Just as in discrete time, the evolution of the transition probabilities over time is described by the Chapman-Kolmogorov equations, but they take a different form in continuous time. In
-formula (2.4) below, we consider a sum over all possible states at some intermediate time. In doing so, we simply write a sum over integers. When we do that, we understand the sum to be over all possible states.
-\begin{equation}\label{eq:markov}
-P_{i,j}(s+t)= \sum_k P_{i,k}(s)P_{k,j}(t)
-\end{equation} 
-A second modelling approach is based on representing the transition probabilities as the solution of a system of ordinary differential equations, which allows us to apply well-established modelling techniques from the theory of differential equations in a deterministic setting; e.g.,see Simmons (1991).But first we must define zero-time transition probabilities, which we do in the obvious way: We let $P(0) = I$, where $I$ is the identity matrix; i.e., we set $P_{i,i}(0) = 1$ for all $i$ and we set $P_{i,j} (0) = 0$ whenever $i \neq j$. We are just assuming that you cannot go anywhere in zero
-time. We then let the transition rate from state $i$ to state $j$ be defined in terms of the derivatives:
-\begin{equation}\label{eq:markov3}
-W_{i,j}\equiv P_{i,j}'(0)\equiv \frac{dP_{i,j}}{dt}
-\end{equation} 
-For a finite state space, which we have assumed, and for infinite state spaces under extra regularity conditions, we will have
+ Solution of master equation requires eigencalues and vectors calculation of martix $W$ which can be a difficult task for large stochastic systems. Also not that digonal elemts of $W$ defined as:  
 \begin{equation}\label{eq:markov3}
 -W_{i,i}\equiv\sum_{j,j\neq i}W_{i,j}
 \end{equation} 
-As an example of transition rate matrix construction one can assume two possible random events occurrence. In terms of magnetic resonance this situation is close to chemical shifts and will be discussed in a bit more details later.  
+Accordingly we can construct two-state system transition matrix as following:   
 \begin{equation}\label{eq:55}
 W = \begin{bmatrix}
        -w_{11} & w_{12}  \\[0.3em]
