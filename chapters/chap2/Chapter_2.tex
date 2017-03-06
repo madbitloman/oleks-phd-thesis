@@ -2,7 +2,7 @@
 \section{Results Magnetic Resonance}
 We will discuss algorithmic approach on developing the generalized Kubo-Anderson model. We will describe general computational pitfalls that was faced during the software development and proposed solutions and tools to simulate stochastic behavior of the interacting systems in applied magnetic field. The introduction to Masters equation and transition rate matrix construction will be covered as well. At the end of the chapter we will cover Hamiltonian construction and difference between various models in low and high field approximations.
 \subsection{Algorithm to find inverse of Liouville Matrix}\label{algorithmsection}
-In order to obtain lineshape from stochastic approach on relaxation effects of spin dynamics it is important to asset proper inversion algorithm of Liouville matrix from Eq\.Ref{eq:35}. Liouville matrix can be represented as two dimensional array where each index of the dimension has and additional three sub-indexes specified by stochastic and electron or/and nuclus spin states. In other words: 
+In order to obtain lineshape from stochastic approach on relaxation effects of spin dynamics it is important to asset proper inversion algorithm of Liouville matrix from Eq\.Ref{eq:35}. Liouville matrix can be represented as two dimensional array where each index of the dimension has and additional three sub-indexes specified by stochastic and electron or/and nucleus spin states. In other words: 
 \begin{equation}\label{eq:53}
 \mathcal{L}_{i,j}=\mathcal{L}_{a,m_0,m_1;b,m_0',m_1'}  
 \end{equation}  
@@ -61,7 +61,7 @@ In general the same pattern of encoding is valid for $j$-th index that consists 
 \end{center}    
 Stage 4 is important as it simplifies summation defined by Eq. 36. \\*
 In order to establish algorithm implementation as well as proceeding software developing Java, Matlab and Python have been tested on computational efficiency. \\*
-Java is  a programming language released by Sun Microsystems in 1995. It is a object-oriented programming language and distributed freely and portable on most modern operating systems platforms. Classes define objects constructors and represent interfaces in a Java application. Just In Time compiler(JIT) bring a boost to queries and computational efficiency allowing to track productivity of each separate part of code~\cite{hortell} and in Java 8 parallel execution of classes have been added~\cite{javapal}. In Java multidimensional arrays represented as an N-dimensional Object superclass and part of java.util.Arrays package. Any interaction between Objects in Java is valid if they are define through the methods that are specified for both objects. For complex numbers operations Thomas Flanagan~\cite{flanagan} Scientific Library was used. Author of this dissertation finds counterproductive rewriting basic available as open source linear algebra packages and relies on 3-d party developers as true example fo scientific collaboration. For the visualization properties for 2-D chats JFreeChart based on native Java Foundation Classes(JFC). For 3-D visualisation Jzy3d open source library was used that requires Open Graphics Library(OpenGL)  multi-platform application programming interface for rendering vector graphics.\\*
+Java is  a programming language released by Sun Microsystems in 1995. It is a object-oriented programming language and distributed freely and portable on most modern operating systems platforms. Classes define objects constructors and represent interfaces in a Java application. Just In Time compiler(JIT) bring a boost to queries and computational efficiency allowing to track productivity of each separate part of code~\cite{hortell} and in Java 8 parallel execution of classes have been added~\cite{javapal}. In Java multidimensional arrays represented as an N-dimensional Object superclass and part of java.util.Arrays package. Any interaction between Objects in Java is valid if they are define through the methods that are specified for both objects. For complex numbers operations Thomas Flanagan~\cite{flanagan} Scientific Library was used. Author of this dissertation finds counterproductive rewriting basic available as open source linear algebra packages and relies on 3-d party developers as true example for scientific collaboration. For the visualization properties for 2-D chats JFreeChart based on native Java Foundation Classes(JFC). For 3-D visualization Jzy3d open source library was used that requires Open Graphics Library(OpenGL)  multi-platform application programming interface for rendering vector graphics.\\*
 As a result we have written SpinAl software based on the described algorithm. It has natively simple interface and comes as SpinAl.jar file. It can be launched on any machine with the Java 7+ environment installed. On MacOS and Linux you can either double tap on the jar-file or to use terminal to launch it:
 \begin{lstlisting}
 $ java -jar SpinAl.jar
@@ -90,11 +90,11 @@ Output of the computation will be Intensity versus frequency graph as on Fig.\re
 Currently SpinAl limited 2, 6 and 48 stochastic indexes as transition rate matrix under rotations is developed for this specific cases. We plan to generalize the software in future releases by adding possibility of creating custom $W$-matrix as well as rotation angles that could be uploaded as text files and parsed by SpinAl. Source code is available at authors public GitHub repository under open license\cite{nmrgit}.\\
 The core algorithm of SpinAl to invert N-d arrays has been separated into framework available on separate GitHub repository\cite{ndgit}. It supports up to 10-D complex arrays inversion. Maximum size supported arrays size is limited precisely as: \ Array[100][100][10][10][10][10][10][10][10][10].\\
 While working on SpinAl during mine PhD career our group was also exploring another possibilities to make computations cost-efficient. Thus we have successfully ported SpinAl to Python programming language where N-d array inversion was overcome by using native methods from scientific libraries. Python is a multi-paradigm high level cross-platform programming language that is well known for its relative simplicity of the syntax and fast expanding open source committing community. It is slower then Java~\cite{slower}. Core libraries like NumPy and SciPy \cite{scipy} for linear algebra make it relatively fast to perform system prototyping~\cite{SciPy1}~\cite{SciPy2}. Algebraic manipulations on N-Dimensional arrays are available in NumPy \cite{numpy} and two different algorithms on reshaping arrays in Fortran-like and C-like are available. Most of the well used libraries written for purpose of Magnetic Resonance computer simulations are given in Fortran code and using Python code wrapper it is possible to efficiently use the out of the box. We have also explored possibility of GPU~\cite{gpu} as well. The key results of this work will be mostly done in Python.\\*
-We have also developed numerous useful tolls for proof-of-concept as well as transition rate matrix population in Matlab which are available upon request from Professor Keith Earle Lab. Matlab is a widely know in computational community multi-paradigm proprietary language developed by MathWorks and requires licence to use it. Matlab 8.2 R2013B was used to for the SpinAl algorithm implementation as well but had a lower performance to the equivalent in written Java. Using C-like N-dimensional array inversion available in latest releases I was not able to reproduce generalized results as in Java and Python in high magnetic field and lower transition rates regimes. Thus majority of the discussed results were obtained in Java and mostly in Python. Python source code is available at GitHub repository as well~\cite{eprgit}\\*
+We have also developed numerous useful tolls for proof-of-concept as well as transition rate matrix population in Matlab which are available upon request from Professor Keith Earle Lab. Matlab is a widely know in computational community multi-paradigm proprietary language developed by MathWorks and requires license to use it. Matlab 8.2 R2013B was used to for the SpinAl algorithm implementation as well but had a lower performance to the equivalent in written Java. Using C-like N-dimensional array inversion available in latest releases I was not able to reproduce generalized results as in Java and Python in high magnetic field and lower transition rates regimes. Thus majority of the discussed results were obtained in Java and mostly in Python. Python source code is available at GitHub repository as well~\cite{eprgit}\\*
 For computation purposes Asus ROG G75VX laptop was used with Intel 3rd generation Core i7 3630QM  processor, 16 GB DDR3 1600GHz memory and equipped with NVIDIA GTX 670 MX graphic processing unit(960 cores).\\* 
 \subsection{Transition Rate Matrix}\label{trmsection}
-In order to advance in description of the interacting environment well discussed in section \ref{kuboandersonsection} we need to determine suitable number of stochastic states $a$ and $b$ that form a two dimensional matrix $W$ known as transition rate matrix. We will start introduction from pure probabilistic approach with correlation to spin dynamics. We were discussing computational algorithm performance in a previous section but have not yet established the relation between 2,6 and 48 sotchastic indexes and their significance. Our goal in this research work was to determine lower bound of discrete states that are necessary to faithfully reproduce an ESR lineshape using concepts derived from information geometry\cite{Earle2009}.\\*
-As an example of transition rate matrix construction we will start by introducing a two-state system that can uniformly and randomly transit between its states. As an example of such system one can imagine a chemical exchange where nucleus moves reversably from one environment to another at constant rate. In general this probabilistic approach on describing time evolution of of large discrete fluctuating systems is widely used in economics\cite{Weidlich1992}. Lets assume that for the nucleus transition to one state is defined by the rate $\omega_{1\rightarrow2}$ and jump back as $\omega_{2\rightarrow1}$ or simply $\omega_{12}$ and $\omega_{21}$. Corresponding probabilities are $P_{1}(t)$ and $P_{2}(t)$ that nucleus either in one or another state. We take the Markov assumption such that transition rate between states does not depend on the history of the process but rather on the state at specific time $t$ between enclosed time intervals $(t,t+dt)$. Further the probability of a nucleus being in state 1 between $(t,t+dt)$ can be described as following: 
+In order to advance in description of the interacting environment well discussed in section \ref{kuboandersonsection} we need to determine suitable number of stochastic states $a$ and $b$ that form a two dimensional matrix $W$ known as transition rate matrix. We will start introduction from pure probabilistic approach with correlation to spin dynamics. We were discussing computational algorithm performance in a previous section but have not yet established the relation between 2,6 and 48 stochastic indexes and their significance. Our goal in this research work was to determine lower bound of discrete states that are necessary to faithfully reproduce an ESR lineshape using concepts derived from information geometry\cite{Earle2009}.\\*
+As an example of transition rate matrix construction we will start by introducing a two-state system that can uniformly and randomly transit between its states. As an example of such system one can imagine a chemical exchange where nucleus moves reversibly from one environment to another at constant rate. In general this probabilistic approach on describing time evolution of of large discrete fluctuating systems is widely used in economics\cite{Weidlich1992}. Lets assume that for the nucleus transition to one state is defined by the rate $\omega_{1\rightarrow2}$ and jump back as $\omega_{2\rightarrow1}$ or simply $\omega_{12}$ and $\omega_{21}$. Corresponding probabilities are $P_{1}(t)$ and $P_{2}(t)$ that nucleus either in one or another state. We take the Markov assumption such that transition rate between states does not depend on the history of the process but rather on the state at specific time $t$ between enclosed time intervals $(t,t+dt)$. Further the probability of a nucleus being in state 1 between $(t,t+dt)$ can be described as following: 
 \begin{equation}\label{eq:premaster}
 P_{1}(t+dt)=P_{1}(t)[1-\omega_{12}dt]+P_{2}\omega_{21}dt+\mathcal{O}(dt^2)
 \end{equation} 
@@ -111,7 +111,7 @@ Eq.\ref{eq:master} known as Master Equation. In vector form:
 \frac{d\vec{p}}{dt}=-\vec{W}\vec{p}
 \end{equation} 
 Where $\vec{p}$ is a column vector with probabilities $p_i$ and $\vec{W}$ is a square transition rate matrix.
- Solution of master equation requires eigencalues and vectors calculation of martix $W$ which can be a difficult task for large stochastic systems. Also not that digonal elemts of $W$ defined as:  
+ Solution of master equation requires eigenvalues and vectors calculation of matrix $W$ which can be a difficult task for large stochastic systems. Also not that diagonal elements of $W$ defined as:  
 \begin{equation}\label{eq:markov3}
 -W_{i,i}\equiv\sum_{j,j\neq i}W_{i,j}
 \end{equation} 
@@ -122,7 +122,8 @@ W = \begin{bmatrix}
         w_{21} & -w_{22}  
      \end{bmatrix}
 \end{equation}
-Diagonal elements are defined via Eq.\ref{eq:markov3} and it means that probability leaving the state is equal to the probability of reaching it. In more complicated example whn relaxation processes couples more states due to the complicated spin motion pattern consider 6 possible states(events). Graph of allowed transitions is given on Fig.\ref{figure:wdiagramm}. One can imagine an octahedron in three dimensional representation labelling edges with indexes from 1 to 6 and defining adjacency matrix of relative coupling,    
+Diagonal elements are defined via Eq.\ref{eq:markov3} and it means that probability leaving the state is equal to the probability of reaching it.
+For modeling nitrooxide sample we need to determine adequate number of stochastic states find to cover all possible orientations. We will start by developing 6 states transition rate matrix. In geometrical three dimensional representation it represents an octahydron. Graph of allowed transitions (adjacency matrix) is given on Fig.\ref{figure:wdiagramm}.     
 \begin{figure}[h!]
 \begin{center}
 \includegraphics[width=0.7\textwidth]{figures/chap2/wdiagramm.png}
@@ -130,6 +131,7 @@ Diagonal elements are defined via Eq.\ref{eq:markov3} and it means that probabil
 \label{figure:wdiagramm}
 \end{center}
 \end{figure}
+We can precisely define $W$ matrix based on \ref{figure:wdiagramm} as following: 
 \begin{equation}\label{eq:Wmat1}
 W = \begin{bmatrix}
        w_{11} & w_{12} & 0 & w_{14} & 0 & w_{16}  \\[0.3em]
@@ -140,7 +142,7 @@ W = \begin{bmatrix}
        w_{61} & 0 & w_{63} & 0 & w_{65} & w_{66} 
      \end{bmatrix}
 \end{equation}
-Diagonal elements are defined as well as for 2 events case by Eq.\ref{eq:markov3}. Another interest is to define rate of tumbling between probability of transitions and assume that an a priori probability between different states transitions might not equal to each other. More evidentially assume transformation of principal axis frame of $g$ or $A$ tensors that are parametrized by euler angles and define  fast transition as $\vec{R}(0,0,0)\xrightarrow {1\rightarrow 6}\vec{R}(0,0,\pi/2)$. Similarly moderate $\vec{R}(0,0,0)\xrightarrow {1\rightarrow 2}\vec{R}(0,\pi/2,0)$  and slow $\vec{R}(0,0,0)\xrightarrow {1\rightarrow 4}\vec{R}(0,0,\pi/2)$. The results for the constructed matrix is given below,   
+This matrix assumed to be asymmetric with equal a priory probabilities which not always the case when transition probabilities are not isotropic. As an example of isotropic transitions probabilities recall that transformation of principal axis frame of $g$ or $A$ tensors that are parametrized by euler angles and one can define unequal a priory probabilities and fast transition as $\vec{R}(0,0,0)\xrightarrow {1\rightarrow 6}\vec{R}(0,0,\pi/2)$. Similarly moderate $\vec{R}(0,0,0)\xrightarrow {1\rightarrow 2}\vec{R}(0,\pi/2,0)$  and slow $\vec{R}(0,0,0)\xrightarrow {1\rightarrow 4}\vec{R}(0,0,\pi/2)$ which imply the re-constructed matrix:   
 \begin{equation}\label{eq:Wmat2}
 W = \begin{bmatrix}
        0 & m & 0 & s & 0 & f  \\[0.3em]
@@ -151,7 +153,7 @@ W = \begin{bmatrix}
        f & 0 & m & 0 & s & 0 
      \end{bmatrix}
 \end{equation}
-Where $s,m$ and $f$ define three probability transition rates: slow, moderate and fast respectively. It appears that for special cases it might slightly modify the line shape. Yet another even more complicated case is given as 48 total stochastic states defined by quaternion representation by rotation by $\pi/2$ on $S(3)$ assuming nearest neighbours distance as $pi/4$ and Euler angles have been reconstructed. The output of the adjacent matrix is appeared to be sparse
+Where $s,m$ and $f$ define three probability transition rates: slow, moderate and fast respectively. It appears that for special cases it might slightly modify the line shape. Yet another even more complicated case is given as 48 total stochastic states defined by quaternion representation by rotation by $\pi/2$ on $S(3)$ assuming nearest neighbors distance as $pi/4$ and Euler angles have been reconstructed. The output of the adjacent matrix is appeared to be sparse
 \begin{figure}[h!]
 \begin{center}
 \includegraphics[scale=0.5]{figures/chap2/sparce.png}
@@ -161,7 +163,7 @@ Where $s,m$ and $f$ define three probability transition rates: slow, moderate an
 \end{figure}  
 \clearpage
 \subsection{Chemical Shift}\label{blumeinitialmodel}
-Validation step for validation AI algorithm is to reproduce original absorption spectra of NMR linehshape for isolated spin-1/2 nucleus in a fixed magnetic field and fluctuating fields along $x,y$ and $z$ orientations. For specific model $I_0=I_1=1/2$. Number of stochastic states corresponds to two and can be described as chemical exchange process. As simple example of chemical exchange consider two $N$-methyl groups in $N,N'$ - dimethylformamide can exchange their relative bond and reactant chemically and physically remains indistinguishable from the product. Methyl groups are coloured in red and black to make process visible.       
+Validation step for validation AI algorithm is to reproduce original absorption spectra of NMR linehshape for isolated spin-1/2 nucleus in a fixed magnetic field and fluctuating fields along $x,y$ and $z$ orientations. For specific model $I_0=I_1=1/2$. Number of stochastic states corresponds to two and can be described as chemical exchange process. As simple example of chemical exchange consider two $N$-methyl groups in $N,N'$ - dimethylformamide can exchange their relative bond and reactant chemically and physically remains indistinguishable from the product. Methyl groups are colored in red and black to make process visible.       
 \begin{figure}[h!]
 \centering
 \includegraphics[width=0.7\textwidth]{figures/chap2/methil.png}
@@ -180,7 +182,7 @@ at 243, 253, 263, and 273 K"~\cite{Bain200363}}
 \end{center}
 \end{figure}  
 Treatment of simple molecular motions and chemical exchange well described in Gamilel ~\cite{gamilel} where they start from determination of absorption spectra by analogy of finding correlation function of classical harmonic oscillator similar to Kubo, Anderson and Blume treatment. Stochastic matrix $W$ introduced in Eq. \ref{eq:34},\ref{eq:35} and \ref{eq:37}that defines transition probability per unit time between stochastic states $a$ and $b$ has the following form:  
-For this specific example $p_a=p_b=1/2$. Derivation of proper $W$ matrix and assigning a priori probabilities is a key to correct computation of absorption spectra for complex dynamic environment.Assuming that a priori probabilitieas are equal transition rate is uniform for between the transitions so that $w_{a,b}=w_{b,a}=T$ where $T$ is a transition rate \\*
+For this specific example $p_a=p_b=1/2$. Derivation of proper $W$ matrix and assigning a priori probabilities is a key to correct computation of absorption spectra for complex dynamic environment. Assuming that a priori probabilities are equal transition rate is uniform for between the transitions so that $w_{a,b}=w_{b,a}=T$ where $T$ is a transition rate \\*
 Time dependent Hamiltonian in Blume\cite{blume} represents nuclear Zeeman interaction and can be constructed as following: 
 \begin{equation}\label{eq:58}
 \mathcal{H}(t)=\sum_jV_jf_j(t)=B_0I_z+\vec{h}\cdot\hat{I}f(t)
@@ -228,12 +230,12 @@ Simulated figures at Fig.\ref{figure:blumediag}(c) completely agrees with origin
 \begin{figure}[h!]
 \centering
 \includegraphics[width=0.7\textwidth]{figures/chap2/blumediag.png}
-\caption{Evolution of NMR line shapes with increase of transition rates $W$ for $I=1/2$ nucleus in a fixed magnetic field along $z$ axis and fluctuating local magnetic fields $h$ along (a) $x$ axis, (b) $y$ axis and (c) $z$ axis. Simulated using AI alagorithm}
+\caption{Evolution of NMR line shapes with increase of transition rates $W$ for $I=1/2$ nucleus in a fixed magnetic field along $z$ axis and fluctuating local magnetic fields $h$ along (a) $x$ axis, (b) $y$ axis and (c) $z$ axis. Simulated using AI algorithm}
 \label{figure:blumediag}
 \end{figure}
 \clearpage
 \subsection{Anisotropic Zeeman}\label{zeemansection}
-To examine if the model is valid for axial asymmetric contributing terms of Hamiltonian first proper construction inculding orientation dependence should be made. Effective anisotropic Hamiltonian for isolated unpaired electron in tensor contraction form using Eq.\ref{eq:58} and Eq.\ref{eq:60} with $g$-tensor components transformed into the laboratory frame\cite{NMRtomograph}\cite{Nordio} using Eq.\ref{eq:47}:
+To examine if the model is valid for axial asymmetric contributing terms of Hamiltonian first proper construction including orientation dependence should be made. Effective anisotropic Hamiltonian for isolated unpaired electron in tensor contraction form using Eq.\ref{eq:58} and Eq.\ref{eq:60} with $g$-tensor components transformed into the laboratory frame\cite{NMRtomograph}\cite{Nordio} using Eq.\ref{eq:47}:
 \begin{subequations}\label{eq:48}
 \begin{align}
 A^{[2],L}_{\pm2,(g)} & =-\frac{1}{2}S_{\pm}B_{\pm}\\
@@ -286,7 +288,7 @@ For non-saturated lines it is enough to include only "secular" part which is the
 \begin{equation}
 \mathcal{H}_{eff}=(\frac{1}{\sqrt{3}}S_zB_z)F_0^{[0]}+(-\sqrt\frac{2}{3}S_zB_z)F_0^{[2]}
 \end{equation}
-Simulated spectra for anisotropic $g$-tensor contribution with rhombic axial symmetry is presented on figure ~\ref{figure:gten1}. Spectra is extremely sensitive to the adjusting parameters of the model as well as transition rates. For example effect of rhombic symmetry is observable for the rates lower then $0.05$othervise the one Lorentzian peak is observed. Resolution should be set no lower then 0.01 othervise the same Lorentzian line shape is presented. 
+Simulated spectra for anisotropic $g$-tensor contribution with rhombic axial symmetry is presented on figure ~\ref{figure:gten1}. Spectra is extremely sensitive to the adjusting parameters of the model as well as transition rates. For example effect of rhombic symmetry is observable for the rates lower then $0.05$ otherwise the one Lorentzian peak is observed. Resolution should be set no lower then 0.01 otherwise the same Lorentzian line shape is presented. 
 \begin{figure}[h!]
 \centering
 \includegraphics[height=8cm,width=1\textwidth]{figures/chap2/gtenanisat1.png}
