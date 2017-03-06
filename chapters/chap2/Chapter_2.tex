@@ -153,7 +153,13 @@ W = \begin{bmatrix}
        f & 0 & m & 0 & s & 0 
      \end{bmatrix}
 \end{equation}
-Where $s,m$ and $f$ define three probability transition rates: slow, moderate and fast respectively. It appears that for special cases it might slightly modify the line shape. Yet another even more complicated case is given as 48 total stochastic states defined by quaternion representation by rotation by $\pi/2$ on $S(3)$ assuming nearest neighbors distance as $pi/4$ and Euler angles have been reconstructed. The output of the adjacent matrix is appeared to be sparse
+Where $s,m$ and $f$ define three probability transition rates: slow, moderate and fast respectively which will affect motional narrowing and will be discussed in the next chapter.\\*
+For octahedral symmetry $W$ matrix construction was done manually and solely based on work and experience of Professor Keith Earle and in general our group suspect that to model more complex interactions we need far more then 6 stochastic states. We approach generalization by treating stochastic states as a randomly generated points on N-dimensional hypersphere or simply 4-sphere. This approach is fairly well accepted at novel algorithms development in robotics on problems in space orientations\cite{robotics}\cite{ershova}. 
+As we need not only distribute uniformly points on a sphere but also take to account its rotation reference frames transformation we are looking at $SO(3)$ orthogonal group that deviates from rotations at the origin in ${\rm I\!R}$. It is useful to represent projective space based on quaternions which will simplify Euler angles calculation compared to Hopf or spherical coordinates. Initial decoration algorithm is straight forward and was developed by Cook\cite{cook}. We pick $\lambda, \Lambda_x, \Lambda_y,\Lambda_z$ from a uniform distribution on $(-1,1)$ and reject points that not met following condition: 
+\begin{equation}\label{eq:cook}
+\lambda^2+\Lambda_x^2+\Lambda_y^2+\Lambda_z^2\geq1
+\end{equation}
+In this decoration we obtained 48 stochastic sates rotating by $\pi/2$. Corresponding adjacency matrix have been constructed such that each state has 6 nearest neighbors at distance $pi/4$. Euler angles have been reconstructed using equations Eq.\ref{eq:191}-\ref{eq:194}. For this specific case we assumed equal a priory probabilities and in future work it will be another challenge to determine transition probability distribution for this case. 
 \begin{figure}[h!]
 \begin{center}
 \includegraphics[scale=0.5]{figures/chap2/sparce.png}
