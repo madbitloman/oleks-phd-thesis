@@ -310,7 +310,7 @@ Interestingly that using unequal a priori probability between states transition 
 \label{figure:gterates}
 \end{figure}
 \clearpage
-\subsection{Coupled Spins 1/2}\label{05coupledspinsection}
+\subsection{Modelling Coupled Spins}\label{coupledspinsection}
 The more complicated and fascinating interest for our group occurs when unpaired electron spin is interacting with nuclei. Thus a hyperfine interaction should be added. But first lets modify Eq.\ref{eq:37} adding additional sets of bra and kets for the unpaired electron quantum states $\langle m_{0s},m_{1s},S_0,S_1|$ and $|S_0,S_1,m_{0s}',m_{1s}'\rangle$ on both sides.  
 \begin{multline}\label{eq:newbras}
 P(\omega)=
@@ -350,6 +350,7 @@ The only interest brings the terms that a partially commute with the Zeeman inte
 \begin{multline}
 \mathcal{H}_{total}=H_{eff}+H_{eff}'=\frac{1}{\sqrt{3}}F_{0}^{[0]}(S_zI_z+S_zB_z) \\ +(-\sqrt{\frac{2}{3}})F_{0}^{[2]}(S_zB_z+S_zI_z)+\frac{1}{2}S_zI_- F_{+1}^{[2]} +(\frac{1}{2})S_zI_+ F_{-1}^{[2]}
 \end{multline}
+\subsubsection{Coupled Spins 1/2 to 1/2}\label{coupledspinonehalfsection}
 To start out with lets consider $S=1/2$ and $I=1/2$ case. Allowed transitions are obvious for the Zeeman interaction and overlapping Hyperfine are defined with the kronecker deltas and more interesting are the two allowed transitions for the "pseudosecular" part of the Hamiltonian:
 $$|m_S=-1/2,m_I=1/2\rangle\rightarrow|m_S=1/2,m_I=1/2\rangle$$ 
 and 
@@ -361,10 +362,26 @@ On the Fig.\ref{figure:spin05} result is given including only terms that are com
 \caption{Evolution of NMR line shapes with increase of transition rates $W$ for $I=1/2$ nucleus in a fixed magnetic field along $z$ axis and fluctuating local magnetic fields $h$ along (a) $x$ axis, (b) $y$ axis and (c) $z$ axis. Simulated using AI alagorithm}
 \label{figure:spin05}
 \end{figure}
+\subsubsection{Spins 1 to 1/2}\label{coupledspinonesection}
+Similarly we can model $S=1$ to $I=1/2$ coupling. 
 \begin{figure}[h!]
 \centering
 \includegraphics[width=1\textwidth]{figures/chap2/spinone.eps}
-\caption{Evolution of NMR line shapes with increase of transition rates $W$ for $I=1/2$ nucleus in a fixed magnetic field along $z$ axis and fluctuating local magnetic fields $h$ along (a) $x$ axis, (b) $y$ axis and (c) $z$ axis. Simulated using AI alagorithm}
+\caption{Evolution of NMR line shapes with increase of transition rates $W$ for $I=1/2$ nucleus in a fixed magnetic field along $z$ axis and fluctuating local magnetic fields $h$ along (a) $x$ axis, (b) $y$ axis and (c) $z$ axis. Simulated using AI alagorithm for 6 states}
 \label{figure:spin05der}
 \end{figure}
+\begin{figure}[h!]
+\centering
+\includegraphics[width=1\textwidth]{figures/chap2/spin051moderate.png}
+\caption{Computed high field EPR spectra for $^{14}N$ (5a) and $^{15}N$ (5b) nitroxide spin-labels arising from 6(blue line) and 48(red line) state models in medium transition rate regime. Transition rate W=5.}
+\label{figure:spin05der}
+\end{figure}
+\subsection{Quadrupolar Interaction}
+\begin{figure}[h!]
+\centering
+\includegraphics[width=1\textwidth]{figures/chap2/2site_final.png}
+\caption{Computed high field EPR spectra arising from the isotropic stochastic modulation of the quadrupole moment of an $^{14}N$ nucleus contained within the nitroxide spin label. The red line is the spectrum arising from the 6 state model. The blue line is the simulation arising from 48 state model. Transition rates are (a)W=0.1,(b) W=0.3,(c)W=1 and (d)W=10}
+\label{figure:spin05der}
+\end{figure}
+\subsection{Conclusion}
 \clearpage
