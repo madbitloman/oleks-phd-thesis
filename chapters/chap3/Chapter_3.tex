@@ -75,7 +75,7 @@ Where $K(x_i,x)$ is the kernel and it should be chosen as symmetric and positive
 The first choice is more computationally cost efficient and numerically unstable when $d$ is increasing. For $d=1$ polynomial kernel reduces to original linear and most common is the quadratic when $d=2$. Radial kernel is an example of transformation of data to infinite dimensional Hilbert space(commonly hypersphere). $\gamma$ in exponent is known as kernel bandwidth and it is one of the tunable and boosting parameters for training the classifier. It is much more widely common to use in the data scientists community. SVM used as binary classifier and multi-class problems usually performed using either each against all method and taking the best score($n$ binary classification problems) or all against each other($n(n-1)/2$ binary classification problems). Most out of box methods do support multi-class classification in R, Python but not in Matlab which can be done easily.  In our work results for both type of kernels will be presented and compared.           
 \clearpage
 \subsection{Artificial Neural Networks}
-It was just a matter of time until researches would try to simulate simple biological neuron. As it was briefly discussed first attempt were made in the 50's by variety of researchers 
+It was just a matter of time until researches would try to simulate simple biological neuron. As it was briefly discussed first attempt were made in the 50's by variety of researchers such as McColloh 
 Activity of $i$th neuron:
 \begin{equation}\label{eq:n1}
 x_i=f(\epsilon_{i})
@@ -114,4 +114,4 @@ Where $v=x-c$ and represents distance from the input vector to the radial basis 
 \includegraphics[width=1\textwidth]{figures/chap3/rbf.png}
 \caption{}
 \label{figure:rbf}
-\end{figure}
+\end{figure}distance
