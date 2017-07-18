@@ -1,8 +1,8 @@
 \chapter{Applied Machine Learning for classification problems in Chemistry}
 \section{Introduction}
-Like in magnetic resonance, majority of early developed models such as first description of perceptron or simple neuron were done by McCulloh and Pitts in 1943\cite{McCulloch1943} but were not used due to the lack of computational power. With rise of distributed computing specifically in this decade field of Artificial Intelligence gain a significan boost with Graphical Processing Unit (GPU) computations decreasing in some cases training of extensive machine learning models from monthes to simply hours with minimum cost involved. This simply greatly impacted variety of applications of ML to solve actual real world problems such as fracture detection from X-ray images\cite{Tian2003} or cancer prediction using gene expression profiling\cite{khan:2001}. Machine Learning models are divided in two groups: Supervised and Unsupervised. Supervised models are such models that require labled data from which they "learn" data in order to be able predict label for the newly introduced data. Typicaly this are Arificial Neural Networks, Support Vector Machines and etc. Unsupervised models are trying to gather insight from the data and group it accordingly to self-defined class or labels, intuitively this are clustering models such as hierrarhical or k-means algorithms. Widely for some problems unsupervised models are used fo prprocessing to perform demensionality reduction in order to fight curse of dimensionality, when extra-features can reduce greatly the predictive power. In this work we will specifically work with supervised models and some unsupervised algortihms were used for geature selection. In this chpater we will discuss how one can use Support Vector Machines, Arificial Neural Networks, Genetic Algorithms and their limitations. We will also discussed bottlenecks that we have faced during this work such as overfitting after preprocessing and etc. 
+Like in magnetic resonance, majority of early developed models such as first description of perceptron or simple neuron were done by McCulloh and Pitts in 1943\cite{McCulloch1943} but were not used due to the lack of computational power. With rise of distributed computing specifically in this decade field of Artificial Intelligence gain a significant boost with Graphical Processing Unit (GPU) computations decreasing in some cases training of extensive machine learning models from months to simply hours with minimum cost involved. This simply greatly impacted variety of applications of ML to solve actual real world problems such as fracture detection from X-ray images\cite{Tian2003} or cancer prediction using gene expression profiling\cite{khan:2001}. Machine Learning models are divided in two groups: Supervised and Unsupervised. Supervised models are such models that require labeled data from which they "learn" data in order to be able predict label for the newly introduced data. Typical this are Artificial Neural Networks, Support Vector Machines and etc. Unsupervised models are trying to gather insight from the data and group it accordingly to self-defined class or labels, intuitively this are clustering models such as hierarchical or k-means algorithms. Widely for some problems unsupervised models are used for preprocessing to perform dimensionality reduction in order to fight curse of dimensionality, when extra-features can reduce greatly the predictive power. In this work we will specifically work with supervised models and some unsupervised algorithms were used for geature selection. In this chapter we will discuss how one can use Support Vector Machines, Arificial Neural Networks, Genetic Algorithms and their limitations. We will also discussed bottlenecks that we have faced during this work such as over-fitting after preprocessing and etc. 
 \subsection{Support vector Machines}
-Support Vector Machines(SVMs) is a really well known and used supervised machine learning technique for data classification. It was first developed by Vladimir Vapnik an soviet expatriate to United States who worked at that time for AT\& T Bell Labs. In a simply few words idea of SVMs is to linearly separate the data which might be non-linearly separable. I will touch main aspects of theoretical derivation to understand the idea behind SVM and will not dive into mathematical madness.
+Support Vector Machines(SVMs) is a really well known and used supervised machine learning technique for data classification. It was first developed by Vladimir Vapnik\cite{vapnick} an soviet expatriate to United States who worked at that time for AT\& T Bell Labs. In a simply few words idea of SVMs is to linearly separate the data which might be non-linearly separable. I will touch main aspects of theoretical derivation to understand the idea behind SVM and will not dive into mathematical madness.
 Lets assume that $X$ is a feature space or space of an objects, and $Y$ is a set of solutions. It is obvious that an algorithm that will find approximate dependencies between the feature $X$-space and the solution $Y$-space have to be found in form $F:X\rightarrow Y$.  At the moment lets only deal with binary classification    namely $Y=(-1,+1)$ and feature space is described by $n$-dimensional real vectors $X=\mathbf{R}^n$. 
 The classifier will have the form: 
 \begin{equation}\label{eq:svm}
@@ -75,4 +75,43 @@ Where $K(x_i,x)$ is the kernel and it should be chosen as symmetric and positive
 The first choice is more computationally cost efficient and numerically unstable when $d$ is increasing. For $d=1$ polynomial kernel reduces to original linear and most common is the quadratic when $d=2$. Radial kernel is an example of transformation of data to infinite dimensional Hilbert space(commonly hypersphere). $\gamma$ in exponent is known as kernel bandwidth and it is one of the tunable and boosting parameters for training the classifier. It is much more widely common to use in the data scientists community. SVM used as binary classifier and multi-class problems usually performed using either each against all method and taking the best score($n$ binary classification problems) or all against each other($n(n-1)/2$ binary classification problems). Most out of box methods do support multi-class classification in R, Python but not in Matlab which can be done easily.  In our work results for both type of kernels will be presented and compared.           
 \clearpage
 \subsection{Artificial Neural Networks}
-
+It was just a matter of time until researches would try to simulate simple biological neuron. As it was briefly discussed first attempt were made in the 50's by variety of researchers such as McColloh 
+Activity of $i$th neuron:
+\begin{equation}\label{eq:n1}
+x_i=f(\epsilon_{i})
+\end{equation}
+Where: 
+\begin{equation}\label{eq:n2}
+\epsilon_{i}=w_{oi}+\sum_{j\subset\Gamma_i}w_{ij}x_j
+\end{equation}
+Applying chain rule to compute each weight in the network for any arbitrary error function $E$
+\begin{equation}\label{eq:n3}
+\frac{\partial E}{\partial w_{ij}}=\frac{\partial E}{\partial \epsilon_{i}}\frac{\partial \epsilon_{i}}{\partial net_{i}}\frac{\partial net_i}{\partial w_{ij}}
+\end{equation}
+Once we know partial derivative of each weight the minimization is done via gradient descent:
+\begin{equation}\label{eq:n4}
+w_{ij}(t+1)=w_{ij}-\lambda\frac{\partial E}{\partial w_{ij}}(t)
+\end{equation}
+\begin{figure}[h!]
+\centering
+\includegraphics[width=1\textwidth]{figures/chap3/mlp.png}
+\caption{Typical three layers feed-forward neural network}
+\label{figure:mlp}
+\end{figure}
+Typical RBF network is: 
+\begin{equation}\label{eq:rbf1}
+f(\bold x)=\sum_{i}^Nw_ih(\bold x)_i
+\end{equation}
+Most Popular choices of radial basis function are: 
+\begin{itemize}
+  \item Gaussian: $e^{-(\frac{v^2}{\beta^2})}$ 
+  \item Multiquadric:  $(v^2+\beta^2)^{\frac{1}{2}}$
+  \item Inverse Multiquadric:  $\frac{1}{(v^2+\beta^2)^{\frac{1}{2}}}$
+  \end{itemize}
+Where $v=x-c$ and represents distance from the input vector to the radial basis function centre, and $\beta$ is a width of a radial basis function.
+\begin{figure}[h!]
+\centering
+\includegraphics[width=1\textwidth]{figures/chap3/rbf.png}
+\caption{}
+\label{figure:rbf}
+\end{figure}distance
