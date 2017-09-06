@@ -212,11 +212,11 @@ First term is a free electron $g$-factor and its value $g_e=2.0023...$ multiplie
 \Delta \pmb{g}_{SO/OZ}=\frac{2g_e\beta_e^3}{\hbar^2k_0c^2\langle S_z\rangle}\sum_N Z_N\sum_n\Bigg[ \frac{\langle0|\hat{\pmb{O}_1}|n\rangle\langle n|\hat{\pmb{O}_2}|0\rangle}{E_0^{(0)}-E_n^{(0)}}+c.c\Bigg]
 \end{equation} 
 Here $N$ is order of nuclei and $"c.c"$ are complex conjugate of spin-orbit coupling integrals.For 1-electron coupling integral is given as:
-\begin{equation}\label{eq:oneel}
+\begin{equation}\label{eq:oneel1}
 \langle 0|\sum_i\frac{1}{r^3_{iN}}\times(\hat1_{iN})_us_{iz}|n\rangle\langle n|\sum_j(\hat1_{iN})_v|0\rangle
 \end{equation}
 And integral for 2-electron coupling can be written as:
-\begin{equation}\label{eq:oneel}
+\begin{equation}\label{eq:oneel2}
 \langle 0|\sum_{ij}[\pmb{r}_{ij}\times(\nabla_i-2\nabla_j)]_us_{jz}|n\rangle\langle n|\sum_j(\pmb{r}_k\times\nabla_k)_v|0\rangle
 \end{equation}
 Where summation is done over all orbitals $(i,j)$ and $u,v$ are the Cartesian axises.
@@ -329,10 +329,10 @@ It is also useful to use an alternative to Euler angles as under standard parame
 \mathcal{A}=\Big[\cos\frac{\phi}{2},\vec{\hat{n}}\sin\frac{\phi}{2}\Big]=[\lambda,\Lambda]
 \end{equation}
 And terms 
-\begin{equation}\label{eq:191}
+\begin{equation}\label{eq:1911}
 \lambda=\cos\frac{\phi}{2}
 \end{equation}
-\begin{equation}\label{eq:191}
+\begin{equation}\label{eq:1912}
 \Lambda=\vec{\hat{n}}\sin\frac{\phi}{2}
 \end{equation}
 Are known as Euler-Rodrigues parameters which give angle-axis parametrization set. To represent stochastic behavour of interaction of spin bath it is also important to map $SU(2)$ to $SO(3)$(hypersphere)~\cite{simon}. This technique is used in order to simulate virtual reality interaction in 3-D~\cite{gorsh}.  
@@ -345,7 +345,7 @@ Are known as Euler-Rodrigues parameters which give angle-axis parametrization se
      \end{bmatrix}     
 \end{equation}
 Where,
-\begin{equation}\label{eq:191}
+\begin{equation}\label{eq:1913}
 \lambda=\cos\frac{1}{2}\beta\cos\frac{1}{2}(\alpha+\gamma)
 \end{equation}
 \begin{equation}\label{eq:192}
@@ -390,15 +390,15 @@ Modulation considered as slow and if:
 \Delta \tau_c \ll 1
 \end{equation}
 For his work in development of correlation functions R. Kubo received Boltzman Medal~\cite{kubo2} Solution of Eq.\ref{eq:oscill} reduced to finding proper description of the stochastic process. Kubo and Anderson proposed well known approach for describing frequency modulation as Markovian process. In more details Markovian probabilistic process will be discussed later in the chapter. Spectral density or simply line shape for stochastic process is given by: 
-\begin{equation}\label{eq:fastmodulation}
+\begin{equation}\label{eq:fastmodulation1}
 I(\omega)=\frac{1}{\pi}\int_0^{\inf}\mathrm{d}t\cos\omega te^{-g(t)}
 \end{equation}
 Where $g(t)$:
-\begin{equation}\label{eq:fastmodulation}
+\begin{equation}\label{eq:fastmodulation2}
 I(\omega)=\int_0^{t}\mathrm{d}t'(t-t')C(t')=\Delta^2\tau t+\Delta\tau^2(e^{-t/\tau}-1)
 \end{equation}
 For slow modulation regime line shape can be approximated by expanding $g(t)$ in lowest order in $t$ or $g(t)\simeq \Delta^2t^2/2$ which leads to Gaussian line shape: 
-\begin{equation}\label{eq:fastmodulation}
+\begin{equation}\label{eq:fastmodulation3}
 I(\omega)=\frac{1}{\sqrt{2\pi\Delta^2}}e^{-\omega^2/2\delta^2}
 \end{equation} 
 For the fast modulation regime $g(t)\simeq \Delta^2\tau t\equiv t/T_2$ and line shape has a Lorentzian shape: 
