@@ -1,0 +1,124 @@
+% 
+\documentclass[12pt,twoside]{report}
+\usepackage{amsmath}
+\usepackage{url}
+\usepackage{color}
+\usepackage{graphicx}
+\usepackage{cite}    
+\usepackage{pdflscape}
+\usepackage{rotating} 
+\usepackage{listings}
+
+\DeclareGraphicsExtensions{.eps,.ps}               
+\renewcommand{\vec}[1]{\mathbf{#1}}
+% ====================================================================
+%     Some formatting 
+% ====================================================================
+\topmargin -0.3in
+\oddsidemargin 0.5in
+\evensidemargin 0.5in
+\textheight 8.5in
+\textwidth 6.0in
+\linespread{2}
+% ====================================================================
+%     The following commands tent to keep LaTex happier in the 
+%     placement of figures, tables, etc
+% ====================================================================
+%
+\renewcommand{\textfraction}{0.0}
+\renewcommand{\floatpagefraction}{0.0}
+\renewcommand{\topfraction}{1.0}
+\renewcommand{\bottomfraction}{1.0}
+\setcounter{topnumber}{9}
+\setcounter{bottomnumber}{9}
+\setcounter{totalnumber}{9}
+% 
+% ====================================================================
+%     Some of the things we need for the title page
+% ====================================================================
+%
+\author{
+	\\
+	by \\
+	\\
+      	Oleksandr Kazakov \\
+	\\
+        Submitted in partial fulfillment of the \\
+        requirements for the degree of \\
+        Doctor of Philosophy \\
+        at \\
+        University at Albany \\
+        Department of Physics \\
+        Albany, USA \\
+	\\
+        \\
+	Advised by Professor Keith Earle and Professor Igor Lednev
+	\\
+	\\
+}
+
+\title{\bf{
+Computational techniques in Magnetic Resonance. Applied Machine Learning for Raman Spectra Classification.}}
+
+\date{\today}
+%
+%\input{definitions}
+%
+%%%%%%%%%%%%%% Example for content of file definitions.tex %%%%%%%%%%%
+\def\ra    {\rightarrow}
+\def\ul    {\underline} 
+\def\mevcc {\ifmmode {\mathrm MeV}/c^2 \else MeV$/c^2$\fi}
+\def\BsJpsiPhi {\ensuremath{\Bs \ra J/\psi\,\phi}}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%
+\begin{document} 
+
+\thispagestyle{empty}
+
+\maketitle
+
+% ====================================================================
+%     Generates one blank page before the 'Abstract'
+% ====================================================================
+
+\thispagestyle{empty} \cleardoublepage
+
+% ====================================================================
+% Abstract goes here
+% ====================================================================
+%
+%\include{abstract}
+%
+%%%%%%%%%%%%%% Example for content of file abstract.tex %%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\thispagestyle{empty} \cleardoublepage
+
+\pagenumbering{roman}
+
+% ====================================================================
+%     Acknowledgments goes here 
+% ====================================================================
+%\include{acknowledgments}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\tableofcontents 
+
+\listoftables
+
+\listoffigures
+
+\clearpage 
+
+\pagenumbering{arabic}
+
+% ===================================================================
+%\include{chapters/chap1/introduction}
+\include{chapters/chapter_1/chapter_1}
+\include{chapters/chapter_2/chapter_2}
+\include{chapters/chapter_3/chapter_3}
+
+\bibliography{thesis_bible.bib}
+\bibliographystyle{ieeetr}
+\end{document}
